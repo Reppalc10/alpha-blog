@@ -1,3 +1,38 @@
 .navbar {
-  background-color: #6daef0 !important;
+  background-color: black !important;
+}
+
+body {
+  background-color: lightgrey;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+#logo {
+  color: white;
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+#home-container {
+  margin-top: 25px;
+  padding: 25px;
+}
+
+.jumbotron {
+  background-image: url('Fuji4.jpeg') !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 700px;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0,0,0,.6);
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
 }
