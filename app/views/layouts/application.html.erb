@@ -25,9 +25,11 @@
 
   <body class="d-flex flex-column min-vh-100">
     <%= render 'layouts/navigation' %>
-    <%= render 'layouts/messages' %>
-    <main class="flex-grow-1">
-    <%= yield %>
+    <div id ="page-content">
+      <%= render 'layouts/messages' %>
+      <main class="flex-grow-1">
+      <%= yield %>
+    </div>
     </main>
 
     <footer class="py-4 bg-black text-white">

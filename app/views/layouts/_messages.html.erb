@@ -1,3 +1,9 @@
-<% flash.each do |name, msg| %> <%# displays message up top after creation %>
-    <%= msg %>
-<% end %>
+<div class="container">
+    <% flash.each do |name, msg| %> <%# displays message up top after creation %>
+        <div class="alert alert-success alert-dismissible fade show pe-5" role="alert">
+            <%= msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+    <% end %>
+</div>
