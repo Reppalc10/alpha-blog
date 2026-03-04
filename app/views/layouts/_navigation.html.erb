@@ -18,7 +18,9 @@
                 Articles
                 </a>
                 <ul class="dropdown-menu">
-                <li><%= link_to "New Article", new_article_path, class: "dropdown-item" %></li>
+                <% if logged_in? %>
+                    <li><%= link_to "New Article", new_article_path, class: "dropdown-item" %></li>
+                <% end %>
                 <li><%= link_to "All Articles", articles_path, class: "dropdown-item" %></li>
                 </ul>
             </li>
@@ -28,8 +30,17 @@
             </li>
 
             <% if logged_in? %>
-            <li class="nav-item">
-                <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
+                <li class="nav-item">
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <%= "(Admin)" if current_user.admin? %> Profile [<%= current_user.username %>]
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li><%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %></li>
+                    <li><%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %></li>
+                    <li><%= link_to "Delete your profile", user_path(current_user), class: "dropdown-item text-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></li>
+                    </ul>
+                </li>
             </li>
             <li class="nav-item">
                 <%= link_to "Logout", logout_path, class: "nav-link", data: { turbo_method: :delete } %>
@@ -44,6 +55,7 @@
             <% end %>
         </ul>
         <form class="d-flex" role="search">
+            <%= link_to "About", about_path, class: "nav-link mt-1 me-4" %>
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-light" type="submit">Search</button>
         </form>

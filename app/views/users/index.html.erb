@@ -21,7 +21,14 @@
                         </h5>
                         <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
                         <%= link_to 'View profile', user, class: "btn btn-outline-dark" %>
-                        <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-secondary" %>
+                        <% if logged_in? %>
+                            <% if user == current_user %>
+                                <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-secondary" %>
+                            <% end %>
+                            <% if current_user.admin? %>
+                                <%= link_to "Delete User", user_path(user), class: "btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure? This will delete the user account and all of their articles." }%>
+                            <% end %>
+                        <% end %>
                     </div>
                     <div class="card-footer text-muted">
                         <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
